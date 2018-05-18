@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %logger{36} - %msg%n"/>
+        </Console>
+
+        <RollingFile name="YobitPriceMonitor"
+                     fileName="logs/YobitPriceMonitor.log" filePattern="logs/YobitPriceMonitor-%d{yyyy-MM-dd}.log">
+            <PatternLayout>
+                <Pattern>%d %-5level - %msg%n</Pattern>
+            </PatternLayout>
+
+            <Policies>
+                <SizeBasedTriggeringPolicy size="30MB" />
+            </Policies>
+
+            <DefaultRolloverStrategy max="4"/>
+        </RollingFile>
+
+        <RollingFile name="PumpWatcher"
+                     fileName="logs/PumpWatcher.log" filePattern="logs/PumpWatcher-%d{yyyy-MM-dd}.log">
+            <PatternLayout>
+                <Pattern>%d %-5level - %msg%n</Pattern>
+            </PatternLayout>
+
+            <Policies>
+                <SizeBasedTriggeringPolicy size="30MB" />
+            </Policies>
+
+            <DefaultRolloverStrategy max="4"/>
+        </RollingFile>
+
+        <RollingFile name="TelegramClient"
+                     fileName="logs/TelegramClient.log" filePattern="logs/TelegramClient-%d{yyyy-MM-dd}.log">
+            <PatternLayout>
+                <Pattern>%d %-5level - %msg%n</Pattern>
+            </PatternLayout>
+
+            <Policies>
+                <SizeBasedTriggeringPolicy size="30MB" />
+            </Policies>
+
+            <DefaultRolloverStrategy max="4"/>
+        </RollingFile>
+
+        <RollingFile name="YobitPriceMonitorError" fileName="logs/YobitPriceMonitorError.log" filePattern="logs/YobitPriceMonitorError-%d{yyyy-MM-dd}.log">
+            <PatternLayout>
+                <Pattern>%d %-5level - %msg%n</Pattern>
+            </PatternLayout>
+
+            <Policies>
+                <SizeBasedTriggeringPolicy size="30MB" />
+            </Policies>
+
+            <DefaultRolloverStrategy max="4"/>
+        </RollingFile>
+
+
+        <RollingFile name="GlobalLogger" fileName="logs/Main.log" filePattern="logs/Main-%d{yyyy-MM-dd}.log">
+            <PatternLayout>
+                <Pattern>%d %-5level - %msg%n</Pattern>
+            </PatternLayout>
+
+            <Policies>
+                <SizeBasedTriggeringPolicy size="30MB" />
+            </Policies>
+
+            <DefaultRolloverStrategy max="4"/>
+        </RollingFile>
+
+
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout   pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n" />
+        </Console>
+
+
+    </Appenders>
+
+
+
+
+    <Loggers>
+        <Root level="trace" additivity="false">
+            <AppenderRef ref="GlobalLogger"/>
+            <appender-ref ref="console" level="info"/>
+        </Root>
+
+        <Logger name="com.pumpbot.YobitPriceMonitor" level="debug" additivity="false">
+            <AppenderRef ref="YobitPriceMonitor" />
+            <appender-ref ref="console" level="info"/>
+        </Logger>
+
+        <Logger name="com.pumpbot.PumpWatcher" level="debug" additivity="false">
+            <AppenderRef ref="PumpWatcher" />
+            <appender-ref ref="console" level="info"/>
+        </Logger>
+
+        <Logger name="com.pumpbot.TelegramClient" level="debug" additivity="false">
+            <AppenderRef ref="TelegramClient" />
+        </Logger>
+
+
+
+
+
+
+    </Loggers>
+</Configuration>
+
+
+
+
+
